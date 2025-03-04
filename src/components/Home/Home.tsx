@@ -1,7 +1,7 @@
 import { Box, Typography } from "@mui/material";
 import React from "react";
 import Sidebar from "../Sidebar/Sidebar";
-import SearchBar from "./SearchBar";
+import Search from "./Search/Search";
 
 const Home = () => {
   return (
@@ -11,7 +11,7 @@ const Home = () => {
         sx={{
           display: "flex",
           flexDirection: "column",
-          marginTop: 15,
+          marginTop: 12,
           alignItems: "center",
           width: "100%",
         }}
@@ -22,10 +22,10 @@ const Home = () => {
         >
           Built for Tech Professionals
         </Typography>
-        <Typography variant="h4" sx={{ color: "#686EEC" }}>
+        <Typography variant="h4" sx={{ color: "#686EEC", py: 3 }}>
           Job Searching Simplified
         </Typography>
-        <SearchBar/>
+        <Search/>
       </Box>
     </Box>
   );
