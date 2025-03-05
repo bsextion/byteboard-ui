@@ -1,5 +1,5 @@
 import * as React from "react";
-import { styled, alpha } from "@mui/material/styles";
+import { styled } from "@mui/material/styles";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -41,7 +41,7 @@ export default function SearchBar() {
             size="large"
             edge="start"
             aria-label="open drawer"
-            sx={{ mr: 2, color: "#1e1d49" }}
+            sx={{ color: "#1e1d49"}}
           >
             <MenuIcon />
           </IconButton>
@@ -52,7 +52,7 @@ export default function SearchBar() {
               inputProps={{ "aria-label": "search" }}
             />
 
-            <IconButton>
+            <IconButton edge="end">
               <SearchIcon sx={{ color: "#1e1d49" }} />
             </IconButton>
           </Search>
