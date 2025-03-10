@@ -1,33 +1,34 @@
-import { Box, Typography } from "@mui/material";
-import React from "react";
-import Sidebar from "../Sidebar/Sidebar";
+import {Box, Stack, Typography } from "@mui/material";
 import Search from "./Search/Search";
 
 const Home = () => {
-  return (
-    <Box sx={{ display: "flex", flexDirection: "row", mt: 8, height: "90vh" }}>
-      <Sidebar />
-      <Box
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          marginTop: 12,
-          alignItems: "center",
-          width: "100%",
-        }}
+  const DescContainer = () => (
+    <Box
+      sx={{
+        textAlign: "center",
+        width: "100%",
+        height: "25%",
+        // backgroundColor: "green",
+      }}
+    >
+      <Typography
+        sx={{ typography: { xs: "h4", md: "h3" }, color: "#32317E", pt: 8 }}
       >
-        <Typography
-          variant="h3"
-          sx={{ fontWeight: "medium", color: "#32317E" }}
-        >
-          Built for Tech Professionals
-        </Typography>
-        <Typography variant="h4" sx={{ color: "#686EEC", py: 3 }}>
-          Job Searching Simplified
-        </Typography>
-        <Search/>
-      </Box>
+        Built for Tech Professionals
+      </Typography>
+      <Typography
+        sx={{ color: "#686EEC", py: 2, typography: { xs: "h5", md: "h4" } }}
+      >
+        Job Searching Simplified
+      </Typography>
     </Box>
+  );
+
+  return (
+    <Stack direction="column" sx={{width: "100vw", height: "100vh"}}>
+      <DescContainer />
+      <Search/>
+      </Stack>
   );
 };
 

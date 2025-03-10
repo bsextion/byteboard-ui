@@ -1,62 +1,67 @@
 import * as React from "react";
-import Box from "@mui/material/Box";
-import Drawer from "@mui/material/Drawer";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
-import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import AccountCircleRoundedIcon from "@mui/icons-material/AccountCircleRounded";
-import StarRateRoundedIcon from "@mui/icons-material/StarRateRounded";
+import { Box, Stack, Typography } from "@mui/material";
+import { Link } from "react-router-dom";
+import HomeIcon from "@mui/icons-material/Home";
+import Person2Icon from "@mui/icons-material/Person2";
+import BookmarkIcon from "@mui/icons-material/Bookmark";
 
-const drawerWidth = 60;
-
-export default function ResponsiveDrawer() {
-  const drawer = (
-    <div>
-      <List>
-        <ListItem key={1} disablePadding>
-          <ListItemButton divider={true}>
-            <ListItemIcon>
-              <AccountCircleRoundedIcon
-                sx={{
-                  color: "#EFF2FE",
-                }}
-              />
-            </ListItemIcon>
-            <ListItemText/>
-          </ListItemButton>
-        </ListItem>
-        <ListItem key={2} disablePadding>
-          <ListItemButton>
-            <ListItemIcon>
-              <StarRateRoundedIcon sx={{ color: "#EFF2FE" }} />
-            </ListItemIcon>
-            <ListItemText />
-          </ListItemButton>
-        </ListItem>
-      </List>
-    </div>
-  );
-
+const Sidebar = () => {
   return (
-    <Box sx={{ display: "flex" }}>
-      <Drawer
-        variant="permanent"
+    <Box
+      sx={{
+        display: "flex",
+        width: { sm: "100vw", md: "10rem" },
+        height: { xs: "5rem", md: "100vh" },
+      }}
+    >
+      <Stack
+        spacing={2}
         sx={{
-          display: { xs: "none", sm: "block" },
-          "& .MuiDrawer-paper": {
-            boxSizing: "border-box",
-            width: drawerWidth,
-            zIndex: 1,
-            marginTop: 8,
-            backgroundColor: "#686EEC",
-          },
+          width: "100%",
+          height: "100%" ,
+          backgroundColor: "#686EEC",
         }}
-        open
       >
-        {drawer}
-      </Drawer>
+        <List
+          sx={{
+            display: "flex",
+            flexDirection: { xs: "row", md: "column" },
+            color: "#E3E3E3",
+          }}
+        >
+          <ListItem>
+            <ListItemButton component={Link} to="/">
+              <HomeIcon sx={{ mr: 1 }} />
+              <ListItemText
+                primary={<Typography variant="subtitle1">Home</Typography>}
+              />
+            </ListItemButton>
+          </ListItem>
+          <ListItem>
+            <ListItemButton component={Link} to="/profile/userid">
+              <Person2Icon sx={{ mr: 1 }} />
+              <ListItemText
+                primary={<Typography variant="subtitle1">Profile</Typography>}
+              />
+            </ListItemButton>
+          </ListItem>
+
+          <ListItem>
+            <ListItemButton component={Link} to="/saved/jobid">
+              <BookmarkIcon sx={{ mr: 1 }} />
+              <ListItemText
+                primary={<Typography variant="subtitle1">Saved</Typography>}
+              />
+            </ListItemButton>
+          </ListItem>
+        </List>
+      </Stack>
     </Box>
   );
-}
+};
+
+export default Sidebar;

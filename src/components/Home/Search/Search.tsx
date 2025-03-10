@@ -1,15 +1,26 @@
-import React from 'react'
-import SearchBar from './SearchBar'
-import SearchResults from './SearchResults'
-import { Box } from '@mui/material'
+import React from "react";
+import SearchBar from "./SearchBar";
+import SearchResults from "./SearchResults";
+import { Box } from "@mui/material";
 
 const Search = () => {
   return (
-    <Box>
-    <SearchBar/>
-    <SearchResults/>
+    <Box
+      sx={{
+        textAlign: "center",
+        width: "100%",
+        height: "100%",
+        // backgroundColor: "red",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "flex-start",
+        alignItems: "center",
+      }}
+    >
+      <SearchBar />
+      <SearchResults />
     </Box>
-  )
-}
+  );
+};
 
-export default Search
+export default Search;

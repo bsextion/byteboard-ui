@@ -9,13 +9,10 @@ export default function SearchResults() {
   const [selectedJob, setSelectedJob] = React.useState<string | null>(null);
   return (
     <Paper
-      sx={{
-        backgroundColor: "white",
-        width: { sm: "70vw", md: "50vw" },
-        my: 3,
-      }}
+    sx={{display: "flex", justifyContent: "center", width: "80%", px: 2, my: 3 }}
+
     >
-      <Grid2 sx={{}}>
+      <Grid2 sx={{width: '100%', }}>
         <Typography sx={{ p: "auto", textAlign: "center" }} variant="subtitle1">
           Search Results
         </Typography>
@@ -28,9 +25,6 @@ export default function SearchResults() {
             )
           )}
         </List>
-
-        {selectedJob && <JobDetail/>}
-
         <Pagination
           count={4}
           sx={{
@@ -41,6 +35,7 @@ export default function SearchResults() {
           }}
         />
       </Grid2>
+      {/* <JobDetail/> */}
     </Paper>
   );
 }
