@@ -2,6 +2,7 @@ import React from "react";
 import SearchBar from "./SearchBar";
 import SearchResults from "./SearchResults";
 import { Box } from "@mui/material";
+import JobDetail from "../../Jobs/JobDetail";
 
 const Search = () => {
   return (
@@ -19,6 +20,8 @@ const Search = () => {
     >
       <SearchBar />
       <SearchResults />
+            {/* <JobDetail/> */}
+
     </Box>
   );
 };
