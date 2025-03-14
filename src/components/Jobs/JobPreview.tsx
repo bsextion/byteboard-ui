@@ -11,51 +11,64 @@ import React from "react";
 import StarRateRoundedIcon from "@mui/icons-material/StarRateRounded";
 import FolderIcon from "@mui/icons-material/Folder";
 
-const JobPreview = ({ index, title }) => {
+const JobPreview = ({data: {index, jobTitle, company, location, salary}, ...rest }) => {
+
   return (
     <>
       <ListItem
-        key={index}
+      disableGutters={true}
+      disablePadding={true}
         secondaryAction={
           <IconButton edge="end">
             <StarRateRoundedIcon sx={{ color: "#757575" }} />
           </IconButton>
         }
       >
-        <ListItemAvatar>
+        <ListItemAvatar sx={{m: 0, p: 0}}>
           <Avatar>
             <FolderIcon />
           </Avatar>
         </ListItemAvatar>
         <ListItemText
-          primary={title}
+          primary={jobTitle}
           secondary={
-            <>
-              <Typography component="div" variant="body2" color="text.primary">
-                GitHub
-              </Typography>
+            <Typography
+              variant="body2"
+              color="text.secondary"
+              component="div"
+            >
               <Typography
-                component="div"
                 variant="body2"
-                color="text.secondary"
+                color="text.primary"
+                component="span"
               >
-                $100k - $120k
+                {company}
               </Typography>
+              <br />
               <Typography
-                component="div"
                 variant="body2"
                 color="text.secondary"
+                component="span"
+              >
+                {salary}
+              </Typography>
+              <br />
+              <Typography
+                variant="body2"
+                color="text.secondary"
+                component="span"
               >
                 Fulltime - Hybrid
               </Typography>
+              <br />
               <Typography
-                component="div"
                 variant="body2"
                 color="text.secondary"
+                component="span"
               >
-                New York, NY
+                {location}
               </Typography>
-            </>
+            </Typography>
           }
         />
         <ListItemText sx={{ display: "flex", justifyContent: "flex-end" }}>
@@ -72,7 +85,7 @@ const JobPreview = ({ index, title }) => {
         </ListItemText>
       </ListItem>
       <Divider />
-    </>
+      </>
   );
 };
 

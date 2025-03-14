@@ -20,6 +20,7 @@ const Search = () => {
     >
       <SearchBar />
       <SearchResults />
+    7
             {/* <JobDetail/> */}
 
     </Box>
