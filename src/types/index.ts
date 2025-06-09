@@ -1,3 +1,11 @@
+export type JobSearchRequest = {
+    query: string,
+    datePosted: string,
+    workFromHome: boolean,
+    excludePublishers: string,
+    fields: string,
+}
+
 export type JobDetail = {
     employerLogo: string,
     employer: string,
