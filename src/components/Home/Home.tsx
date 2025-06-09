@@ -8,7 +8,6 @@ const Home = () => {
         textAlign: "center",
         width: "100%",
         height: "25%",
-        // backgroundColor: "green",
       }}
     >
       <Typography
