@@ -6,6 +6,23 @@ export type JobSearchRequest = {
     fields: string,
 }
 
+export type Job = {
+    job_id: string,
+    // employerLogo: string,
+    employer_name: string,
+    job_title: string,
+    description: string,
+    job_location: string,
+    job_min_salary: string,
+    job_max_salary: string
+    job_employment_type: string,
+    job_is_remote: boolean,
+    job_posted_at_datetime_utc: string,
+    job_publisher: string,
+    job_apply_link: string,
+
+}
+
 export type JobDetail = {
     employerLogo: string,
     employer: string,
