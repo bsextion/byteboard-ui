@@ -35,9 +35,7 @@ const formatSalary = (min: string, max: string) => {
 const formatPostedAt = (utcDate: string) => {
     //if job posted more than 1 day ago, return the date in MM/DD/YYYY format
   const now = new Date();
-  console.log("Current date:", now);
   const convertedUtcDate = new Date(utcDate);
-  console.log("UTC :", convertedUtcDate);
   const diffHours = Math.floor(Math.abs(convertedUtcDate.getTime() - now.getTime()) / 36e5);
 
   return diffHours < 24 ? `${diffHours} hours ago` : convertedUtcDate.toLocaleDateString();

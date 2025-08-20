@@ -5,22 +5,21 @@ import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import SearchIcon from "@mui/icons-material/Search";
 
-export default function SearchBar({ setTriggerSearch, searchTerm, setSearchTerm }) {
+export default function SearchBar({ setTriggerSearch, param, setParam }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (searchTerm) {
-      console.log("Triggered search:", searchTerm);
+    if (param) {
+      console.log("Triggered search:", param);
       setTriggerSearch((prev: number) => prev + 1); // Trigger search
     }
   };
 
   const handleChange = (query: string ) => {
-    setSearchTerm((prev) => ({
+    setParam((prev) => ({
       ...prev,
       query
     }));
-    // console.log("Updated search term:", { ...searchTerm });
   }
 
   return (

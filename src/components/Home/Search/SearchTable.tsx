@@ -2,14 +2,14 @@ import React from "react";
 import List from "@mui/material/List";
 import Typography from "@mui/material/Typography";
 import { Divider, Grid2, Pagination, Paper } from "@mui/material";
-import JobPreview from "../../Jobs/JobPreview";
+import JobRow from "../Jobs/JobRow";
 import Loader from "../../../common/Loader";
 
 interface SearchResultsProps {
   loading: boolean;
 }
 
-export default function SearchResults({ loading, jobs }: SearchResultsProps) {
+export default function SearchTable({ loading, jobs }: SearchResultsProps) {
   {
     const [selectedJob, setSelectedJob] = React.useState<string | null>(null);
     const [showJobDetail, setShowJobDetail] = React.useState(false);
@@ -18,30 +18,6 @@ export default function SearchResults({ loading, jobs }: SearchResultsProps) {
       setSelectedJob(jobId);
       setShowJobDetail(prev => !prev);
     }
-
-    const tempData = [
-      {
-        index: 0,
-        jobTitle: "Fullstack Software Engineer",
-        company: "Google",
-        location: "San Francisco, CA",
-        salary: "100k"
-      },
-      {
-        index: 1,
-        jobTitle: "Backend Software Engineer",
-        company: "Microsoft",
-        location: "Redmond, WA",
-        salary: "100k"
-      },
-      {
-        index: 2,
-        jobTitle: "Frontend Software Engineer",
-        company: "Facebook",
-        location: "Menlo Park, CA",
-        salary: "100k"
-      },
-    ];
 
     return (
       <Paper
@@ -59,7 +35,7 @@ export default function SearchResults({ loading, jobs }: SearchResultsProps) {
             </Typography>}
             {loading && <Loader open={loading} />}
             {!loading && jobs && jobs.map((data, index) => (
-              <JobPreview
+              <JobRow
                 key={index}
                 data={data}
                 onClick={() => handleJobClick(data.index.toString())}

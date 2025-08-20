@@ -11,7 +11,7 @@ import React from "react";
 import StarRateRoundedIcon from "@mui/icons-material/StarRateRounded";
 import FolderIcon from "@mui/icons-material/Folder";
 
-const JobPreview = ({data: {index, jobTitle, employerName, location, salary, employmentType, isRemote, jobPostingDate}, ...rest }) => {
+const JobRow = ({data: {index, jobTitle, employerName, location, salary, employmentType, isRemote, jobPostingDate}, ...rest }) => {
 
   return (
     <>
@@ -89,4 +89,4 @@ const JobPreview = ({data: {index, jobTitle, employerName, location, salary, emp
   );
 };
 
-export default JobPreview;
+export default JobRow;

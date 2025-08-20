@@ -1,7 +1,9 @@
 export type JobSearchRequest = {
     query: string,
-    datePosted: string,
+    page: number,
+    datePosted: JobPostDate,
     workFromHome: boolean,
+    employmentTypes: Employment,
     excludePublishers: string,
     fields: string,
 }
@@ -23,25 +25,52 @@ export type Job = {
 
 }
 
-export type JobDetail = {
-    employerLogo: string,
-    employer: string,
-    jobTitle: string,
-    description: string,
-    location: string,
-    salary: string
-    employmentType: string,
-    postingDate: string,
-    applyLink: string,
-    isRemote: boolean,
-    skills: JobSkills[],
-    certs: JobCerts[],
+export enum SortBy {
+    RECENT = "RECENT",
+    RELEVANT = "RELEVANT"
 }
 
-export type JobSkills = {
-skill: string
+export enum Employment {
+    FULL_TIME = "FULLTIME",
+    PART_TIME = "PARTTIME",
+    CONTRACTOR = "CONTRACTOR",
+    INTERN = "INTERN",
 }
 
-export type JobCerts = {
-    certificate: string
+export enum JobPostDate {
+    ALL = "all",
+    TODAY = "today",
+    THREEDAYS = "3days",
+    WEEK = "week",
+    MONTH = "month",
 }
+
+export type FilterMenuModal = {
+    title: string,
+    selected: any,
+    options: any
+
+}
+
+// export type JobDetail = {
+//     employerLogo: string,
+//     employer: string,
+//     jobTitle: string,
+//     description: string,
+//     location: string,
+//     salary: string
+//     employmentType: string,
+//     postingDate: string,
+//     applyLink: string,
+//     isRemote: boolean,
+//     skills: JobSkills[],
+//     certs: JobCerts[],
+// }
+
+// export type JobSkills = {
+//     skill: string
+// }
+
+// export type JobCerts = {
+//     certificate: string
+// }
