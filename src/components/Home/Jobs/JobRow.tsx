@@ -11,24 +11,24 @@ import React from "react";
 import StarRateRoundedIcon from "@mui/icons-material/StarRateRounded";
 import FolderIcon from "@mui/icons-material/Folder";
 
-const JobPreview = ({data: {index, jobTitle, company, location, salary}, ...rest }) => {
+const JobRow = ({data: {index, jobTitle, employerName, location, salary, employmentType, isRemote, jobPostingDate}, ...rest }) => {
 
   return (
     <>
       <ListItem
       disableGutters={true}
-      disablePadding={true}
-        secondaryAction={
-          <IconButton edge="end">
-            <StarRateRoundedIcon sx={{ color: "#757575" }} />
-          </IconButton>
-        }
+      disablePadding={false}
+        // secondaryAction={
+        //   <IconButton edge="end">
+        //     <StarRateRoundedIcon sx={{ color: "#757575" }} />
+        //   </IconButton>
+        // }
       >
-        <ListItemAvatar sx={{m: 0, p: 0}}>
+        {/* <ListItemAvatar sx={{m: 0, p: 0}}>
           <Avatar>
             <FolderIcon />
           </Avatar>
-        </ListItemAvatar>
+        </ListItemAvatar> */}
         <ListItemText
           primary={jobTitle}
           secondary={
@@ -42,7 +42,7 @@ const JobPreview = ({data: {index, jobTitle, company, location, salary}, ...rest
                 color="text.primary"
                 component="span"
               >
-                {company}
+                {employerName}
               </Typography>
               <br />
               <Typography
@@ -58,7 +58,7 @@ const JobPreview = ({data: {index, jobTitle, company, location, salary}, ...rest
                 color="text.secondary"
                 component="span"
               >
-                Fulltime - Hybrid
+                {employmentType} {isRemote ? " | Remote" : ""}
               </Typography>
               <br />
               <Typography
@@ -71,9 +71,9 @@ const JobPreview = ({data: {index, jobTitle, company, location, salary}, ...rest
             </Typography>
           }
         />
-        <ListItemText sx={{ display: "flex", justifyContent: "flex-end" }}>
-          Skills Mentioned:
-          <Typography variant="body2" color="text.secondary">
+        <ListItemText sx={{ display: "flex", justifyContent: "flex-start", alignSelf: "flex-start", px: 1 }}>
+          Posted: {jobPostingDate}
+          {/* <Typography variant="body2" color="text.secondary">
             React
           </Typography>
           <Typography variant="body2" color="text.secondary">
@@ -81,7 +81,7 @@ const JobPreview = ({data: {index, jobTitle, company, location, salary}, ...rest
           </Typography>
           <Typography variant="body2" color="text.secondary">
             HTML/CSS
-          </Typography>
+          </Typography> */}
         </ListItemText>
       </ListItem>
       <Divider />
@@ -89,4 +89,4 @@ const JobPreview = ({data: {index, jobTitle, company, location, salary}, ...rest
   );
 };
 
-export default JobPreview;
+export default JobRow;

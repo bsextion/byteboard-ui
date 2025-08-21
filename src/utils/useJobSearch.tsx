@@ -2,10 +2,11 @@ import axios from "axios";
 import { JobSearchRequest } from "../types";
 import { useEffect, useRef, useState } from "react";
 import { api_job_search } from "./apiGlobal";
+import { transformJobData } from "./jobUtils";
 
 export const useJobSearch = (params: JobSearchRequest, deps: any = []) => {
   const [jobs, setJobs] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
   const isFirstLoad = useRef(false);
@@ -13,11 +14,13 @@ export const useJobSearch = (params: JobSearchRequest, deps: any = []) => {
   const fetchJobs = async () => {
     try {
       setLoading(true);
+
       const response = await axios.get(api_job_search, { params });
-      //transform the job data
-      
-      setJobs(response.data);
       console.log("Jobs fetched:", response.data);
+      //transform the job data
+      const transformedJobs = transformJobData(response.data.data);
+
+      setJobs(transformedJobs);
     }
     catch (err: any) {
       setError(err);
@@ -29,6 +32,7 @@ export const useJobSearch = (params: JobSearchRequest, deps: any = []) => {
 
   useEffect(() => {
     if (isFirstLoad.current) {
+      // console.log("useJobSearch params:", params);
     fetchJobs();
     }
     else {
