@@ -1,5 +1,5 @@
 import axios from "axios";
-import { JobSearchRequest } from "../types";
+import { JobSearchRequest } from "../models/types";
 import { useEffect, useRef, useState } from "react";
 import { api_job_search } from "./apiGlobal";
 import { transformJobData } from "./jobUtils";
@@ -15,6 +15,7 @@ export const useJobSearch = (params: JobSearchRequest, deps: any = []) => {
     try {
       setLoading(true);
 
+      console.log("Calling api with params:", params);
       const response = await axios.get(api_job_search, { params });
       console.log("Jobs fetched:", response.data);
       //transform the job data

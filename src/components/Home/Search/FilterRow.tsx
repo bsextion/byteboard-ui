@@ -1,32 +1,74 @@
 import { Box, Button, Checkbox, FormControl, FormControlLabel, FormGroup, FormLabel, Modal, Radio, RadioGroup, Typography } from "@mui/material";
-import React from "react";
+import React, { use, useEffect } from "react";
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
-import { filterDateOptions, filterEmploymentOptions, sortByOptions } from "../../../types/options";
-import { FilterMenuModal } from "../../../types";
+import { filterDateOptions, filterEmploymentOptions, sortByOptions } from "../../../models/options";
+import { FilterMenuModal } from "../../../models/types";
+import key from "../../../models/constants.json";
 
-const FilterRow = () => {
+const FilterRow = ({ searchParams, setSearchParams, setTriggerSearch }) => {
     const [modalOpen, setModalOpen] = React.useState(false);
     const [activeModal, setActiveModal] = React.useState({});
+    const [firstRender, setFirstRender] = React.useState(true);
+
+    const [filterModal, setFilterModal] = React.useState({
+        sortBy: {
+            mapping: key.mapping.sort,
+            title: key.title.sort,
+            selected: sortByOptions[0],
+            options: sortByOptions,
+        },
+        datePosted: {
+            mapping: key.mapping.date,
+            title: key.title.date,
+            selected: filterDateOptions[0],
+            options: filterDateOptions,
+        },
+        employmentTypes: {
+            mapping: key.mapping.employment,
+            title: key.title.employment,
+            selected: filterEmploymentOptions[0],
+            options: filterEmploymentOptions
+        }
+    });
 
     const handleOpen = (type: string = "") => {
-        if (type == "sortBy" || type == "filterByDate" || type == "filterEmployment") {
-            setActiveModal(menuModal[type]);
+        if (Object.values(key.mapping).some(val => val === type)) {
+            const modalData = filterModal[type];
+            setActiveModal(modalData);
         }
         else {
-            setActiveModal({});
+            setActiveModal({} as FilterMenuModal);
         }
         setModalOpen((prev) => !prev);
     }
 
     const handleFilterChange = (index) => {
-        console.log("Selected option before:", activeModal.selected);
-        activeModal.selected = activeModal.options[index];
-        console.log("Selected option after:", activeModal.selected);
+        const updatedModal = {
+            ...activeModal,
+            selected: activeModal.options[index]
+        };
+        setFilterModal((prev) => ({
+            ...prev,
+            [updatedModal.mapping]: updatedModal
+        }));
+
+        setSearchParams((prev) => ({
+            ...prev,
+            [updatedModal.mapping]: updatedModal.selected.value
+        }));
+
+        setActiveModal(updatedModal);
+
+        if (searchParams.query.trim() == "") {
+            console.log("No query! Please add a ui message!");
+            return;
+        }
+
+        setTriggerSearch((prev: number) => prev + 1);
 
     }
 
-    
-    const isModalEmpty = Object.keys(activeModal).length === 0;
+    const isModalEmpty = !activeModal || Object.keys(activeModal).length === 0;
 
     const modalStyle = {
         position: 'absolute',
@@ -48,31 +90,13 @@ const FilterRow = () => {
 
     }
 
-    let menuModal = {
-        sortBy: {
-            title: "Sort By",
-            selected: sortByOptions[0],
-            options: sortByOptions,
-        },
-        filterByDate: {
-            title: "Filter By Date",
-            selected: filterDateOptions[0],
-            options: filterDateOptions,
-        },
-        filterEmployment: {
-            title: "Filter By Employment",
-            selected: filterEmploymentOptions[0],
-            options: filterEmploymentOptions
-        }
-    }
-
     return (
         <>
             {modalOpen && !isModalEmpty &&
                 <Box >
                     <Modal
-                        open={open}
-                        onClose={handleOpen}
+                        open={modalOpen}
+                        onClose={() => handleOpen()}
                         aria-labelledby="modal-modal-title"
                         aria-describedby="modal-modal-description"
                     >
@@ -80,11 +104,22 @@ const FilterRow = () => {
                             <FormLabel id="demo-radio-buttons-group-label">{activeModal.title}</FormLabel>
                             <RadioGroup
                                 aria-labelledby="demo-radio-buttons-group-label"
-                                defaultValue={activeModal.selected.value}
+                                value={activeModal.selected.value}
                                 name="radio-buttons-group"
+                                onChange={(event) => {
+                                    const index = activeModal.options.findIndex(option => option.value === event.target.value);
+                                    if (index !== -1) {
+                                        handleFilterChange(index);
+                                    }
+                                }}
                             >
                                 {activeModal.options.map((option, index) => (
-                                <FormControlLabel key={index} value={option.value} control={<Radio />} label={option.label} onClick={() => handleFilterChange(index)}/>
+                                    <FormControlLabel
+                                        key={index}
+                                        value={option.value}
+                                        control={<Radio />}
+                                        label={option.label}
+                                    />
                                 ))}
                             </RadioGroup>
 
@@ -94,13 +129,13 @@ const FilterRow = () => {
             }
 
             <Box sx={{ display: "flex", justifyContent: "center", width: "60%", px: 5 }}>
-                <Button variant="text" sx={menuButtonStyle} onClick={() => handleOpen("sortBy")} endIcon={<KeyboardArrowDownIcon />}>
-                    {menuModal["sortBy"].selected["label"]}
+                <Button variant="text" sx={menuButtonStyle} onClick={() => handleOpen(key.mapping.sort)} endIcon={<KeyboardArrowDownIcon />}>
+                    {filterModal[key.mapping.sort].selected.label}
                 </Button>
-                <Button variant="text" sx={menuButtonStyle} onClick={() => handleOpen("filterByDate")} endIcon={<KeyboardArrowDownIcon />}>
-                    {menuModal["filterByDate"].selected["label"]}
+                <Button variant="text" sx={menuButtonStyle} onClick={() => handleOpen(key.mapping.date)} endIcon={<KeyboardArrowDownIcon />}>
+                    {filterModal[key.mapping.date].selected.label}
                 </Button >
-                <Button variant="text" sx={menuButtonStyle} onClick={() => handleOpen("filterEmployment")} endIcon={<KeyboardArrowDownIcon />}>
+                <Button variant="text" sx={menuButtonStyle} onClick={() => handleOpen(key.mapping.employment)} endIcon={<KeyboardArrowDownIcon />}>
                     Employment Type
                 </Button>
             </Box>

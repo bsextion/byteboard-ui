@@ -1,7 +1,25 @@
-import {Box, Stack, Typography } from "@mui/material";
+import { Box, Stack, Typography } from "@mui/material";
 import Search from "./Search/Search";
+import { createContext, useState } from "react";
+import { Employment, JobPostDate, JobSearchRequest, SortBy } from "../../models/types";
+
+export const SearchParamContext = createContext();
 
 const Home = () => {
+  const [searchParams, setSearchParams] = useState<JobSearchRequest>(
+     {
+      query: "",
+      page: 1, //default page
+      sortBy: SortBy.RECENT, // default value
+      datePosted: JobPostDate.TODAY, // default value
+      workFromHome: false,
+      employmentTypes: Employment.FULL_TIME, // default value
+      excludePublishers: "",
+      fields: ""
+    }
+  );
+  const [triggerSearch, setTriggerSearch] = useState(0);
+
   const DescContainer = () => (
     <Box
       sx={{
@@ -24,10 +42,14 @@ const Home = () => {
   );
 
   return (
-    <Stack direction="column" sx={{width: "100vw", height: "100vh"}}>
+    <Stack direction="column" sx={{ width: "100vw", height: "100vh" }}>
       <DescContainer />
-      <Search/>
-      </Stack>
+      <SearchParamContext.Provider value={{
+        searchParams, setSearchParams, triggerSearch, setTriggerSearch
+      }}>
+        <Search />
+      </SearchParamContext.Provider>
+    </Stack>
   );
 };
 

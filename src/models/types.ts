@@ -1,6 +1,7 @@
 export type JobSearchRequest = {
     query: string,
     page: number,
+    sortBy: SortBy,
     datePosted: JobPostDate,
     workFromHome: boolean,
     employmentTypes: Employment,

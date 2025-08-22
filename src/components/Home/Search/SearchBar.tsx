@@ -5,18 +5,24 @@ import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import SearchIcon from "@mui/icons-material/Search";
 
-export default function SearchBar({ setTriggerSearch, param, setParam }) {
+export default function SearchBar({ setTriggerSearch, searchParams, setSearchParams }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (param) {
-      console.log("Triggered search:", param);
+    
+     if (searchParams.query.trim() == "") {
+            console.log("No query! Please add a ui message!");
+            return;
+        }
+        
+    if (searchParams) {
+      console.log("Triggered search:", searchParams);
       setTriggerSearch((prev: number) => prev + 1); // Trigger search
     }
   };
 
   const handleChange = (query: string ) => {
-    setParam((prev) => ({
+    setSearchParams((prev) => ({
       ...prev,
       query
     }));
@@ -29,7 +35,7 @@ export default function SearchBar({ setTriggerSearch, param, setParam }) {
       onSubmit={(e) => handleSubmit(e)}
     >
       <IconButton sx={{ p: "10px" }} aria-label="menu">
-        <MenuIcon />
+        <MenuIcon/>
       </IconButton>
       <InputBase
         sx={{ ml: 1, flex: 1 }}

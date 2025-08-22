@@ -2,22 +2,14 @@ import React, { useEffect, useState } from "react";
 import SearchBar from "./SearchBar";
 import { Box } from "@mui/material";
 import { useJobSearch } from "../../../utils/useJobSearch";
-import { JobSearchRequest } from "../../../types";
+import { JobSearchRequest } from "../../../models/types";
 import SearchTable from "./SearchTable";
 import FilterRow from "./FilterRow";
+import { SearchParamContext } from "../Home";
 
 const Search = () => {
-  const [triggerSearch, setTriggerSearch] = useState(0);
-  const [param, setParam] = useState({} as JobSearchRequest);
-  const { jobs, loading, error } = useJobSearch(param, [triggerSearch]);
-
-  //usecontext to manage search state
-
-    //param, setParam will called from the context and used in SearchBar and FilterRow components, to be defined in context provider here
-
-    //setParam term will only update a specific field with value
-
-    //update the filter will update the specific field according to the active filter type
+  const { searchParams, setSearchParams, triggerSearch, setTriggerSearch } = React.useContext(SearchParamContext);
+  const { jobs, loading, error } = useJobSearch(searchParams, [triggerSearch]);
 
 
   return (
@@ -32,8 +24,8 @@ const Search = () => {
         alignItems: "center",
       }}
     >
-      <SearchBar setTriggerSearch={setTriggerSearch} param={param} setParam={setParam} />
-      <FilterRow  />
+      <SearchBar setTriggerSearch={setTriggerSearch} searchParams={searchParams} setSearchParams={setSearchParams} />
+      <FilterRow  setTriggerSearch={setTriggerSearch} searchParams={searchParams} setSearchParams={setSearchParams} setTriggerSearch={setTriggerSearch}   />
       <SearchTable jobs={jobs} loading={loading} />
     </Box>
   );

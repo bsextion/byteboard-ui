@@ -1,4 +1,4 @@
-import { Job } from "../types";
+import { Job } from "../models/types";
 
 
 export const transformJobData = (jobs: any) => {

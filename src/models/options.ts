@@ -1,4 +1,4 @@
-import { Employment, JobPostDate, SortBy } from "."
+import { Employment, JobPostDate, SortBy } from "./types"
 
 export const sortByOptions = [
     { label: "Most Recent", value: SortBy.RECENT },
