@@ -4,7 +4,7 @@ export type JobSearchRequest = {
     sortBy: SortBy,
     datePosted: JobPostDate,
     workFromHome: boolean,
-    employmentTypes: Employment,
+    employmentTypes: Employment[],
     excludePublishers: string,
     fields: string,
 }

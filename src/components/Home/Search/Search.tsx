@@ -4,7 +4,7 @@ import { Box } from "@mui/material";
 import { useJobSearch } from "../../../utils/useJobSearch";
 import { JobSearchRequest } from "../../../models/types";
 import SearchTable from "./SearchTable";
-import FilterRow from "./FilterRow";
+import FilterRow from "./Filter/FilterRow";
 import { SearchParamContext } from "../Home";
 
 const Search = () => {

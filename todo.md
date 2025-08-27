@@ -3,9 +3,21 @@
 - [x] Configure to call front end
 - [x] Display in results tab
 - [] Sort by posting date
-- [] Add filter on backend (on initial search)
-- [] Add filter on backend (after search)
+    - [x] Add sorting functionality in backend
+    - [x] Update FilterRow to display correct modal
+    - [x] Add context to manage search query
+    - [x] Update sorting functionality in frontend
+    - [x] Add sorting functionality in backend
+- [x] Update sorting functionality in frontend
 - [x] Add loading spinner
 - [x] Map job details accordingly
-- [ ] Ensure tabulation is working (get 10 pages of data max)
-- [ ] Add filter view (see `JobSearchRequest`)
+- [] Add filters (Employment Type, Job Poster, Remote Only, Date Posted)
+    - [x] Add filtering functionality in backend
+    - [x] Call the endpoint and from the response, get a unique list of job publishers
+    - [x] Update filters in frontend
+    - [] Update employment type filter for alow multi select
+    - [] Add Radio button for Remote Only filter
+    - [] Add filter to hide/show publisher in frontend. Should show publishers after first search with results
+    - [] Add message if query is empty
+    - [ ] Ensure tabulation is working (get 10 pages of data max)
+    - [] Fix ui to show rows properly

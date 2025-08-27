@@ -2,6 +2,7 @@ import { Box, Stack, Typography } from "@mui/material";
 import Search from "./Search/Search";
 import { createContext, useState } from "react";
 import { Employment, JobPostDate, JobSearchRequest, SortBy } from "../../models/types";
+import { filterEmploymentOptions } from "../../models/options";
 
 export const SearchParamContext = createContext();
 
@@ -13,7 +14,7 @@ const Home = () => {
       sortBy: SortBy.RECENT, // default value
       datePosted: JobPostDate.TODAY, // default value
       workFromHome: false,
-      employmentTypes: Employment.FULL_TIME, // default value
+      employmentTypes: Object.values(filterEmploymentOptions).map(item => item.value), // default value
       excludePublishers: "",
       fields: ""
     }

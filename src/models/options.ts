@@ -14,7 +14,6 @@ export const filterDateOptions = [
 ]
 
 export const filterEmploymentOptions = [
-    { label: "All", value: "" },
     { label: "Full-Time", value: Employment.FULL_TIME },
     { label: "Part-Time", value: Employment.PART_TIME },
     { label: "Contractor", value: Employment.CONTRACTOR },
