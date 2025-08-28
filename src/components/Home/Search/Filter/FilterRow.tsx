@@ -27,6 +27,12 @@ const FilterRow = ({ searchParams, setSearchParams, setTriggerSearch }) => {
             title: key.title.employment,
             selected: [...filterEmploymentOptions],
             options: filterEmploymentOptions
+        },
+        excludePublishers: {
+            mapping: "",
+            title: "",
+            selected: [],
+            options: [],
         }
     });
 
@@ -43,20 +49,14 @@ const FilterRow = ({ searchParams, setSearchParams, setTriggerSearch }) => {
 
 
     const isValueArray = (value: any) => { return Array.isArray(value) }
-    const allValuesSelected = (activeModal: any) => { Object.values(activeModal.selected).some(val => val) }
 
     const handleFilterChange = (index) => {
         let updatedModal = { ...activeModal }
-        console.log('Updated modal : ', updatedModal);
         if (isValueArray(updatedModal.selected)) {
             const selectedOption = updatedModal.options[index]
             const indexOfSelected = updatedModal.selected.findIndex(option => option === selectedOption);
-            console.log('Selection  option : ', selectedOption);
-            console.log('Index of selected : ', indexOfSelected);
-            console.log('Current selected : ', updatedModal.selected);
             indexOfSelected === -1 ? updatedModal.selected.push(selectedOption) : updatedModal.selected.splice(indexOfSelected, 1)
 
-            console.log('Updated modal with selected array: ', updatedModal);
         }
 
         else {
@@ -64,7 +64,6 @@ const FilterRow = ({ searchParams, setSearchParams, setTriggerSearch }) => {
                 ...activeModal,
                 selected: activeModal.options[index]
             };
-            console.log('Updated modal with selected value: ', updatedModal)
         }
 
         setFilterModal((prev) => ({

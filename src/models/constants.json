@@ -2,12 +2,14 @@
     "mapping": {
         "sort": "sortBy",
         "date": "datePosted",
-        "employment": "employmentTypes"
+        "employment": "employmentTypes",
+        "publisher": "excludePublishers"
     },
     "title": {
         "sort": "Sort By",
         "date": "Filter By Date",
-        "employment": "Filter By Employment"
+        "employment": "Filter By Employment",
+        "publish": "Hide Jobs By Publisher"
     },
     "logo": "/src/assets/logo.png",
     "app_logo": "ByteBoard",

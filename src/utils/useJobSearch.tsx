@@ -13,8 +13,6 @@ export const useJobSearch = (params: JobSearchRequest, deps: any = []) => {
   const fetchJobs = async () => {
     try {
       setLoading(true);
-
-      console.log("Calling api with params:", params.employmentTypes);
       const response = await axios({
         params,
         url: api_job_search,
@@ -24,12 +22,8 @@ export const useJobSearch = (params: JobSearchRequest, deps: any = []) => {
       }
 
       );
-      console.log("Jobs fetched:", response.data);
       //transform the job data
       const transformedJobs = transformJobData(response.data.data);
-
-
-
       setJobs(transformedJobs);
     }
     catch (err: any) {
