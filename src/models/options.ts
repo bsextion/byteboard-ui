@@ -1,11 +1,11 @@
-import { Employment, JobPostDate, SortBy } from "./types"
+import { Employment, JobPostDate, SortBy, Option } from "./types"
 
-export const sortByOptions = [
+export const sortByOptions: Option[] = [
     { label: "Most Recent", value: SortBy.RECENT },
     { label: "Most Relevant", value: SortBy.RELEVANT },
 ]
 
-export const filterDateOptions = [
+export const filterDateOptions: Option[] = [
     { label: "Past 24 hours", value: JobPostDate.TODAY },
     { label: "Past 3 days", value: JobPostDate.THREEDAYS },
     { label: "Past week", value: JobPostDate.WEEK },
@@ -13,7 +13,7 @@ export const filterDateOptions = [
     { label: "All Time", value: JobPostDate.ALL }
 ]
 
-export const filterEmploymentOptions = [
+export const filterEmploymentOptions: Option[] = [
     { label: "Full-Time", value: Employment.FULL_TIME },
     { label: "Part-Time", value: Employment.PART_TIME },
     { label: "Contractor", value: Employment.CONTRACTOR },

@@ -25,6 +25,24 @@ export type Job = {
     job_apply_link: string,
 
 }
+export type Option = {
+    label: string,
+    value: any
+}
+
+export type FilterModals = {
+    sortBy: FilterItem,
+    datePosted: FilterItem,
+    employmentTypes: FilterItem,
+    excludePublishers: FilterItem
+}
+export type FilterItem = {
+  mapping: string;
+  title: string;
+  selected: Option | Option[];
+  options: Option[];
+};
+
 
 export enum SortBy {
     RECENT = "RECENT",
@@ -44,13 +62,6 @@ export enum JobPostDate {
     THREEDAYS = "3days",
     WEEK = "week",
     MONTH = "month",
-}
-
-export type FilterMenuModal = {
-    title: string,
-    selected: any,
-    options: any
-
 }
 
 // export type JobDetail = {

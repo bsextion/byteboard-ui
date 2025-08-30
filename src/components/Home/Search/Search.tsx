@@ -4,13 +4,13 @@ import { Box } from "@mui/material";
 import { useJobSearch } from "../../../utils/useJobSearch";
 import { JobSearchRequest } from "../../../models/types";
 import SearchTable from "./SearchTable";
-import FilterRow from "./Filter/FilterRow";
+import FilterRow from "./FilterRow";
 import { SearchParamContext } from "../Home";
+import Filter from "./Filter/Filter";
 
 const Search = () => {
   const { searchParams, setSearchParams, triggerSearch, setTriggerSearch } = React.useContext(SearchParamContext);
   const { jobs, loading, error } = useJobSearch(searchParams, [triggerSearch]);
-
 
   return (
     <Box
@@ -25,7 +25,7 @@ const Search = () => {
       }}
     >
       <SearchBar setTriggerSearch={setTriggerSearch} searchParams={searchParams} setSearchParams={setSearchParams} />
-      <FilterRow  setTriggerSearch={setTriggerSearch} searchParams={searchParams} setSearchParams={setSearchParams} setTriggerSearch={setTriggerSearch}   />
+      <Filter setTriggerSearch={setTriggerSearch} searchParams={searchParams} setSearchParams={setSearchParams} />
       <SearchTable jobs={jobs} loading={loading} />
     </Box>
   );
