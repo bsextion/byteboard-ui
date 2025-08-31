@@ -5,11 +5,13 @@ import { Divider, Grid2, Pagination, Paper } from "@mui/material";
 import JobRow from "../Jobs/JobRow";
 import Loader from "../../../common/Loader";
 
-interface SearchResultsProps {
-  loading: boolean;
-}
 
-export default function SearchTable({ loading, jobs }: SearchResultsProps) {
+type SearchResultsProps = {
+    loading: boolean;
+    jobs: any
+};
+
+export default function SearchResults({ loading, jobs, currentPage, setSearchParams, setTriggerSearch }) {
   {
     const [selectedJob, setSelectedJob] = React.useState<string | null>(null);
     const [showJobDetail, setShowJobDetail] = React.useState(false);
@@ -19,10 +21,20 @@ export default function SearchTable({ loading, jobs }: SearchResultsProps) {
       setShowJobDetail(prev => !prev);
     }
 
+    const handleNextPage = (e: any, pageSelected: number) => {
+      console.log("Page clicked: ", pageSelected)
+        setSearchParams((prev) => ({
+      ...prev,
+      page: pageSelected
+    }));
+    
+     setTriggerSearch((prev: number) => prev + 1);
+       
+    }
+
     return (
       <Paper
         sx={{ display: "flex", justifyContent: "center", width: "60%", px: 2, my: 3 }}
-
       >
         <Grid2 sx={{ width: '100%', }}>
           <Typography sx={{ p: "auto", textAlign: "center" }} variant="subtitle1">
@@ -42,7 +54,6 @@ export default function SearchTable({ loading, jobs }: SearchResultsProps) {
               />
             ))}
 
-
             {/* {showJobDetail && <JobDetail jobId={selectedJob} />} */}
             {/*   
           {!loading && jobs.length === 0 && (
@@ -56,20 +67,22 @@ export default function SearchTable({ loading, jobs }: SearchResultsProps) {
             (data, index) => (
               <JobPreview key={index} data={data} onClick={handleJobClick} />
     
-              // showJobDetail && <JobDetail jobId={selectedJob} />
-              
+              // showJobDetail && <JobDetail jobId={selectedJob} />     
             )
           )} */}
 
           </List>
           <Pagination
-            count={4}
+          page={currentPage }
+          disabled={jobs.length < 1}
+            count={jobs.length < 1 ? 1 : 50}
             sx={{
               display: "flex",
               justifyContent: "flex-end",
               alignItems: "flex-end",
               p: 1,
             }}
+            onChange={(e, page) => handleNextPage(e, page)}
           />
         </Grid2>
       </Paper>

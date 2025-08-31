@@ -1,4 +1,4 @@
-import { Box, Checkbox, FormControlLabel, FormGroup, FormLabel, Modal, Radio, RadioGroup } from "@mui/material";
+import { Box, FormLabel, Modal } from "@mui/material";
 import React from "react";
 import { FilterItem } from "../../../../models/types";
 import { MultiSelectView, View } from "./ModalView";
