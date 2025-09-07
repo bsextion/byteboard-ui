@@ -13,7 +13,7 @@ const Home = () => {
       page: 1, //default page
       sortBy: SortBy.RECENT, // default value
       datePosted: JobPostDate.TODAY, // default value
-      workFromHome: false,
+      workFromHome: true,
       employmentTypes: Object.values(filterEmploymentOptions).map(item => item.value), // default value
       excludePublishers: "",
       fields: ""

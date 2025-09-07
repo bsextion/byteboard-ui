@@ -34,13 +34,14 @@ export type FilterModals = {
     sortBy: FilterItem,
     datePosted: FilterItem,
     employmentTypes: FilterItem,
-    excludePublishers: FilterItem
+    excludePublishers: FilterItem,
+    workFromHome: FilterItem
 }
 export type FilterItem = {
   mapping: string;
   title: string;
-  selected: Option | Option[];
-  options: Option[];
+  selected: Option | Option[] | boolean;
+  options?: Option[];
 };
 
 

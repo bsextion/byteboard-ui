@@ -3,13 +3,16 @@
         "sort": "sortBy",
         "date": "datePosted",
         "employment": "employmentTypes",
-        "publisher": "excludePublishers"
+        "publisher": "excludePublishers",
+        "remote": "workFromHome"
+
     },
     "title": {
         "sort": "Sort By",
         "date": "Filter By Date",
         "employment": "Filter By Employment",
-        "publish": "Hide Jobs By Publisher"
+        "publish": "Hide Jobs By Publisher",
+        "remote": "Remote Only"
     },
     "logo": "/src/assets/logo.png",
     "app_logo": "ByteBoard",

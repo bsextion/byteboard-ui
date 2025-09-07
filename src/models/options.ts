@@ -19,3 +19,8 @@ export const filterEmploymentOptions: Option[] = [
     { label: "Contractor", value: Employment.CONTRACTOR },
     { label: "Intern", value: Employment.INTERN }
 ]
+
+export const filterWorkFromHomeOptions: Option[] = [
+    { label: "Remote Only", value: true },
+    { label: "Remote Only", value: false },
+]

@@ -4,7 +4,7 @@ import { Box } from "@mui/material";
 import key from "../../../../models/constants.json";
 import MenuButton from "./MenuButton";
 import { FilterItem, FilterModals } from "../../../../models/types";
-import { filterDateOptions, filterEmploymentOptions, sortByOptions } from "../../../../models/options";
+import { filterDateOptions, filterEmploymentOptions, filterWorkFromHomeOptions, sortByOptions } from "../../../../models/options";
 
 const Filter = ({ setTriggerSearch, searchParams, setSearchParams }) => {
     const [isOpen, setIsOpen] = React.useState(false);
@@ -33,6 +33,11 @@ const Filter = ({ setTriggerSearch, searchParams, setSearchParams }) => {
             title: "",
             selected: [],
             options: [],
+        },
+        workFromHome: {
+            mapping: key.mapping.remote,
+            title: key.title.remote,
+            selected: true,
         }
     });
 
@@ -53,18 +58,20 @@ const Filter = ({ setTriggerSearch, searchParams, setSearchParams }) => {
         const selectedOption = modal.options[index]
         const indexOfSelected = modal.selected.findIndex(option => option === selectedOption);
         indexOfSelected === -1 ? modal.selected.push(selectedOption) : modal.selected.splice(indexOfSelected, 1)
+        return modal;
     }
 
     const handleSelected = (modal: FilterItem, index: number) => {
         modal = {
-                ...activeFilterModal,
-                selected: activeFilterModal.options[index]
-            };
+            ...activeFilterModal,
+            selected: activeFilterModal.options[index]
+        }
+        return modal;
     }
 
     const handleFilterChange = (index: number) => {
         let updatedModal = { ...activeFilterModal }
-        isMultiSelect(updatedModal.selected) ? handleMultiSelected(updatedModal, index) : handleSelected(updatedModal, index)
+        updatedModal = isMultiSelect(updatedModal.selected) ? handleMultiSelected(updatedModal, index) : handleSelected(updatedModal, index)
 
         setFilterModals((prev) => ({
             ...prev,
@@ -85,13 +92,41 @@ const Filter = ({ setTriggerSearch, searchParams, setSearchParams }) => {
         setTriggerSearch((prev: number) => prev + 1);
     }
 
+    const handleFilterToggle = ( mapping: any,) => {
+        let updatedModals = { ...filterModals,
+            [mapping]: {
+                ...filterModals[mapping as keyof FilterModals],
+                selected: !filterModals[mapping as keyof FilterModals].selected
+            }
+         }
+
+
+        setFilterModals(
+            updatedModals
+        );
+
+         setSearchParams((prev) => ({
+            ...prev,
+            [mapping]: updatedModals[mapping as keyof FilterModals].selected
+        }));
+
+
+
+        if (searchParams.query.trim() == "") {
+            console.log("No query! Please add a ui message!");
+            return;
+        }
+        setTriggerSearch((prev: number) => prev + 1);
+    }
+
     return (
         <>
             <FilterModal modal={activeFilterModal} handleFilterChange={handleFilterChange} handleOpen={handleOpen} isOpen={isOpen} />
-            <Box sx={{ display: "flex", justifyContent: "center", width: "60%", px: 5 }}>
+            <Box sx={{ display: "flex", justifyContent: "center", width: "80%", px: 5 }}>
                 <MenuButton onClick={() => handleOpen(key.mapping.sort)} title={filterModals[key.mapping.sort as keyof FilterModals].selected.label} />
                 <MenuButton onClick={() => handleOpen(key.mapping.date)} title={filterModals[key.mapping.date as keyof FilterModals].selected.label} />
                 <MenuButton onClick={() => handleOpen(key.mapping.employment)} title={"Employment Type"} />
+                <MenuButton title={"Remote Only"} isCheckbox={true} handleFilterToggle={handleFilterToggle} selected={filterModals[key.mapping.remote as keyof FilterModals].selected}  />
             </Box>
         </>
     );
