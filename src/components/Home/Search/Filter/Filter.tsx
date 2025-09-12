@@ -1,6 +1,6 @@
 import React from "react";
 import FilterModal from "./FilterModal";
-import { Box } from "@mui/material";
+import { Alert, Box } from "@mui/material";
 import key from "../../../../models/constants.json";
 import MenuButton from "./MenuButton";
 import { FilterItem, FilterModals } from "../../../../models/types";
@@ -86,7 +86,6 @@ const Filter = ({ setTriggerSearch, searchParams, setSearchParams }) => {
         setActiveFilterModal(updatedModal);
 
         if (searchParams.query.trim() == "") {
-            console.log("No query! Please add a ui message!");
             return;
         }
         setTriggerSearch((prev: number) => prev + 1);
@@ -112,10 +111,10 @@ const Filter = ({ setTriggerSearch, searchParams, setSearchParams }) => {
 
 
 
-        if (searchParams.query.trim() == "") {
-            console.log("No query! Please add a ui message!");
-            return;
-        }
+        // if (searchParams.query.trim() == "") {
+        //     console.log("No query! Please add a ui message!");
+        //     return;
+        // }
         setTriggerSearch((prev: number) => prev + 1);
     }
 

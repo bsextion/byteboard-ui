@@ -3,6 +3,7 @@ import { JobSearchRequest } from "../models/types";
 import { useEffect, useRef, useState } from "react";
 import { api_job_search } from "./apiGlobal";
 import { transformJobData } from "./jobUtils";
+import AlertMessage from "../common/AlertMessage";
 export const useJobSearch = (params: JobSearchRequest, deps: any = []) => {
   const [jobs, setJobs] = useState([]);
   const [loading, setLoading] = useState(false);
