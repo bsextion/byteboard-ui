@@ -50,7 +50,7 @@ const DetailSidePanel: React.FC<DetailSidePanelProps> = ({ selectedJob, showJobD
           </Box>
           <Box display="flex" flexDirection="column" height={100} alignContent="end">
 
-            <Button href="" target="_blank" rel="" variant="contained" size="small" sx={{ mr: 1, bgcolor: '#686EEC', '&:hover': { bgcolor: '#38349F' } }}>
+            <Button href={selectedJob.jobLink} target="_blank" rel="" variant="contained" size="small" sx={{ mr: 1, bgcolor: '#686EEC', '&:hover': { bgcolor: '#38349F' } }}>
               Apply
             </Button>
             <IconButton>
