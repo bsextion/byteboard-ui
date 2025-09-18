@@ -1,11 +1,11 @@
 import axios from "axios";
-import { JobSearchRequest } from "../models/types";
+import { JobDetail, JobSearchRequest } from "../models/types";
 import { useEffect, useRef, useState } from "react";
 import { api_job_search } from "./apiGlobal";
 import { transformJobData } from "./jobUtils";
-import AlertMessage from "../common/AlertMessage";
+
 export const useJobSearch = (params: JobSearchRequest, deps: any = []) => {
-  const [jobs, setJobs] = useState([]);
+  const [jobs, setJobs] = useState<JobDetail[]>();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
@@ -37,7 +37,6 @@ export const useJobSearch = (params: JobSearchRequest, deps: any = []) => {
 
   useEffect(() => {
     if (isFirstLoad.current) {
-      // console.log("useJobSearch params:", params);
       fetchJobs();
     }
     else {

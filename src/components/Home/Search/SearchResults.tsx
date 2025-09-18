@@ -1,91 +1,53 @@
 import React from "react";
-import List from "@mui/material/List";
-import Typography from "@mui/material/Typography";
-import { Divider, Grid2, Pagination, Paper } from "@mui/material";
-import JobRow from "../Jobs/JobRow";
-import Loader from "../../../common/Loader";
-
+import DetailSidePanel from "./Jobs/DetailSidePanel";
+import JobsPanel from "./Jobs/JobsPanel";
+import { Job } from "../../../models/types";
 
 type SearchResultsProps = {
-    loading: boolean;
-    jobs: any
+  loading: boolean;
+  jobs: any,
+  currentPage: number,
+  setSearchParams: React.Dispatch<React.SetStateAction<any>>,
+  setTriggerSearch: React.Dispatch<React.SetStateAction<number>>,
 };
 
-export default function SearchResults({ loading, jobs, currentPage, setSearchParams, setTriggerSearch }) {
+const SearchResults: React.FC<SearchResultsProps> = ({ loading, jobs, currentPage, setSearchParams, setTriggerSearch }) => {
   {
-    const [selectedJob, setSelectedJob] = React.useState<string | null>(null);
+    const [selectedJob, setSelectedJob] = React.useState< any>({});
     const [showJobDetail, setShowJobDetail] = React.useState(false);
 
     const handleJobClick = (jobId: string) => {
-      setSelectedJob(jobId);
-      setShowJobDetail(prev => !prev);
+      const clickedJob = jobs.find((job: any) => job.jobId === jobId);
+        
+        setSelectedJob(clickedJob);
+        setShowJobDetail(true);
+        console.log("setting job: ", selectedJob);
+      
     }
 
     const handleNextPage = (e: any, pageSelected: number) => {
-      console.log("Page clicked: ", pageSelected)
-        setSearchParams((prev) => ({
-      ...prev,
-      page: pageSelected
-    }));
-    
-     setTriggerSearch((prev: number) => prev + 1);
-       
+      setSearchParams((prev) => ({
+        ...prev,
+        page: pageSelected
+      }));
+
+      setTriggerSearch((prev: number) => prev + 1);
+
+    }
+
+    const handlePanelClose = () => {
+        setShowJobDetail(false);
+        setSelectedJob(null);
     }
 
     return (
-      <Paper
-        sx={{ display: "flex", justifyContent: "center", width: "60%", px: 2, my: 3 }}
-      >
-        <Grid2 sx={{ width: '100%', }}>
-          <Typography sx={{ p: "auto", textAlign: "center" }} variant="subtitle1">
-            Results
-          </Typography>
-          <Divider />
-          <List dense={true}>
-            {!loading && !jobs && <Typography variant="subtitle2" sx={{ textAlign: "center", mt: 2 }}>
-              No results found
-            </Typography>}
-            {loading && <Loader open={loading} />}
-            {!loading && jobs && jobs.map((data, index) => (
-              <JobRow
-                key={index}
-                data={data}
-                onClick={() => handleJobClick(data.index.toString())}
-              />
-            ))}
+      <>
+        <JobsPanel loading={loading} jobs={jobs} currentPage={currentPage} handleJobClick={handleJobClick} handleNextPage={handleNextPage} />
+        {<DetailSidePanel  selectedJob={selectedJob} showJobDetail={showJobDetail} handlePanelClose={handlePanelClose} />}
 
-            {/* {showJobDetail && <JobDetail jobId={selectedJob} />} */}
-            {/*   
-          {!loading && jobs.length === 0 && (
-            <Typography variant="subtitle1" sx={{ textAlign: "center", mt: 2 }}>
-              No results found
-            </Typography>
-          )} */}
-            {/* <Loader open={false} />
-          {}
-          {jobs.map(
-            (data, index) => (
-              <JobPreview key={index} data={data} onClick={handleJobClick} />
-    
-              // showJobDetail && <JobDetail jobId={selectedJob} />     
-            )
-          )} */}
-
-          </List>
-          <Pagination
-          page={currentPage }
-          disabled={jobs.length < 1}
-            count={jobs.length < 1 ? 1 : 50}
-            sx={{
-              display: "flex",
-              justifyContent: "flex-end",
-              alignItems: "flex-end",
-              p: 1,
-            }}
-            onChange={(e, page) => handleNextPage(e, page)}
-          />
-        </Grid2>
-      </Paper>
+      </>
     );
   }
 }
+
+export default SearchResults;

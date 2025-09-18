@@ -5,7 +5,7 @@ import { useJobSearch } from "../../../utils/useJobSearch";
 import { JobSearchRequest } from "../../../models/types";
 import SearchTable from "./SearchResults";
 import FilterRow from "./FilterRow";
-import { SearchParamContext } from "../Home";
+import { SearchParamContext } from "../Home"; 
 import Filter from "./Filter/Filter";
 import SearchResults from "./SearchResults";
 

@@ -1,34 +1,17 @@
 import {
-  Avatar,
   Divider,
-  IconButton,
   ListItem,
-  ListItemAvatar,
+  ListItemButton,
   ListItemText,
   Typography,
 } from "@mui/material";
 import React from "react";
-import StarRateRoundedIcon from "@mui/icons-material/StarRateRounded";
-import FolderIcon from "@mui/icons-material/Folder";
 
-const JobRow = ({data: {index, jobTitle, employerName, location, salary, employmentType, isRemote, jobPostingDate}, ...rest }) => {
-
-  return (
+const Job = ( {data, handleJobClick}) => {
+const {jobId, jobTitle, employerName, location, salary, employmentType, isRemote, jobPostingDate} = data
+return (
     <>
-      <ListItem
-      disableGutters={true}
-      disablePadding={false}
-        // secondaryAction={
-        //   <IconButton edge="end">
-        //     <StarRateRoundedIcon sx={{ color: "#757575" }} />
-        //   </IconButton>
-        // }
-      >
-        {/* <ListItemAvatar sx={{m: 0, p: 0}}>
-          <Avatar>
-            <FolderIcon />
-          </Avatar>
-        </ListItemAvatar> */}
+        <ListItemButton onClick={() => handleJobClick(jobId)}>
         <ListItemText
           primary={jobTitle}
           secondary={
@@ -83,10 +66,11 @@ const JobRow = ({data: {index, jobTitle, employerName, location, salary, employm
             HTML/CSS
           </Typography> */}
         </ListItemText>
-      </ListItem>
+        </ListItemButton>
+
       <Divider />
       </>
   );
 };
 
-export default JobRow;
+export default Job;

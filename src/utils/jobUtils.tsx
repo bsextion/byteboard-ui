@@ -1,8 +1,8 @@
-import { Job } from "../models/types";
+import { Job, JobDetail } from "../models/types";
 
 
 export const transformJobData = (jobs: any) => {
-    const transformedJobData = jobs.map((item: Job) => ({
+    const transformedJobData: JobDetail[] = jobs.map((item: Job) => ({
         jobId: item.job_id,
         jobTitle: item.job_title,
         employerName: item.employer_name,
@@ -12,6 +12,8 @@ export const transformJobData = (jobs: any) => {
         jobPostingDate: item.job_posted_at_datetime_utc ? formatPostedAt(item.job_posted_at_datetime_utc) : "Not listed",
         jobPublisher: item.job_publisher,
         isRemote: item.job_is_remote,
+        jobLink: item.job_apply_link,
+        description: item.job_description,
     }))
     console.log("Transformed job data:", transformedJobData);
     return transformedJobData;

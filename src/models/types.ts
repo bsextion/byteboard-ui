@@ -14,7 +14,7 @@ export type Job = {
     // employerLogo: string,
     employer_name: string,
     job_title: string,
-    description: string,
+    job_description: string,
     job_location: string,
     job_min_salary: string,
     job_max_salary: string
@@ -25,6 +25,23 @@ export type Job = {
     job_apply_link: string,
 
 }
+
+export type JobDetail = {
+    jobId: string,
+    // employerLogo: string,
+    employerName: string,
+    jobTitle: string,
+    location: string,
+    salary: string,
+    employmentType: string,
+    isRemote: boolean,
+    jobPostingDate: string,
+    jobPublisher: string,
+    jobLink: string,
+    description: string,
+
+}
+
 export type Option = {
     label: string,
     value: any
