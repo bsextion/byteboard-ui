@@ -22,11 +22,11 @@ const JobsPanel: React.FC<JobsPanelProps> = ({ loading, jobs, currentPage, handl
                 Results
             </Typography>
             <Divider />
-            {/* <List dense={true}>
+            <List dense={true}>
                 {loading && <Loader open={loading} />}
                 {!loading && noJobsFound && <Typography variant="subtitle2" sx={{ textAlign: "center", mt: 2 }}>
                     No Jobs Listed.
-                </Typography>} */}
+                </Typography>}
 
                 {!loading && jobs && jobs.map((data, index) => (
                     <Job
@@ -35,7 +35,7 @@ const JobsPanel: React.FC<JobsPanelProps> = ({ loading, jobs, currentPage, handl
                         handleJobClick={handleJobClick}
                     />
                 ))}
-            {/* </List> */}
+            </List>
              
                     <Box sx={{ display: "flex", justifyContent: "end", my: 1, gap: 1 }}>
                         {currentPage > 1 && <Button variant="outlined" onClick={(e) => handlePage(e, currentPage - 1)}>Previous</Button>}

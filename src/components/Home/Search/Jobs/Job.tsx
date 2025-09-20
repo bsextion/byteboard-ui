@@ -14,12 +14,9 @@ const Job = ( {data, handleJobClick}) => {
 const {jobId, jobTitle, employerName, location, salary, employmentType, isRemote, jobPostingDate} = data
 return (
     <>
-    <Card>
-      <CardHeader>Header</CardHeader>
-      <CardContent>Content</CardContent>
-    </Card>
-        {/* <ListItemButton onClick={() => handleJobClick(jobId)}>
-        <ListItemText
+
+        <ListItemButton onClick={() => handleJobClick(jobId)}>
+        <ListItemText  sx={{display: "flex", flexDirection: "column", width: '70%'}}
           primary={jobTitle}
           secondary={
             <Typography
@@ -63,19 +60,11 @@ return (
         />
         <ListItemText sx={{ display: "flex", justifyContent: "flex-start", alignSelf: "flex-start", px: 1 }}>
           Posted: {jobPostingDate}
-          {/* <Typography variant="body2" color="text.secondary">
-            React
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-            Typescript
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-            HTML/CSS
-          </Typography> */}
-        {/* </ListItemText>
+ 
+         </ListItemText>
         </ListItemButton>
 
-      <Divider /> */}
+      <Divider />
       </>
   );
 };

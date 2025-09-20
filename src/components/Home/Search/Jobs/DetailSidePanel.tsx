@@ -16,8 +16,8 @@ type DetailSidePanelProps = {
 const DetailSidePanel: React.FC<DetailSidePanelProps> = ({ selectedJob, showJobDetail, handlePanelClose }) => {
   const JobDetailDrawer = (
     showJobDetail && selectedJob &&
-    <Box sx={{ width: {md: 600, sm: '100%'}, p: 2, height: "100%" }}>
-      <Paper elevation={3} sx={{ p: 3, borderRadius: 3}}>
+    <Box sx={{ width: { md: 600, sm: '100%' }, p: 2, height: "100%", overflowY: "auto" }}>
+      <Paper elevation={3} sx={{ p: 3, borderRadius: 3, overflowY: "auto" }}>
         <Box display="flex" justifyContent="space-between" alignItems="center">
           <Box display="flex" flexDirection="column" >
             <Typography variant="h6" fontWeight="bold">
@@ -31,7 +31,7 @@ const DetailSidePanel: React.FC<DetailSidePanelProps> = ({ selectedJob, showJobD
               <Chip label={selectedJob.employmentType} variant="filled" sx={{ bgcolor: "#686EEC", color: "white" }} />
               {selectedJob.isRemote && <Chip label={"Remote"} variant="filled" sx={{ bgcolor: "#686EEC", color: "white" }} />}
             </Box>
-            <Box display="flex" sx={{my: 0.5}}>
+            <Box display="flex" sx={{ my: 0.5 }}>
               <LocationOn fontSize="small" />
               <Typography variant="body2" color="text.primary">
                 {selectedJob.location}
@@ -59,36 +59,40 @@ const DetailSidePanel: React.FC<DetailSidePanelProps> = ({ selectedJob, showJobD
         </Box>
 
 
-        {/* <Box mt={2}>
-            <Typography variant="body2" color="text.secondary">
-              {selectedJob.job_location || "New York, NY"} •{" "}
-              {selectedJob.job_min_salary || "$120K/yr"}
-            </Typography>
-          </Box> */}
-
         <Divider sx={{ my: 2 }} />
 
 
-        {/* <Typography variant="subtitle2" fontWeight="bold">
-            Skills:
-          </Typography>
-          <Box mt={1} display="flex" flexWrap="wrap" gap={1}>
-            {selectedJob.skills?.map((skill, i) => (
-              <Chip key={i} label={skill} color="primary" variant="outlined" />
-            )) || (
-              <>
-                <Chip label="JavaScript" />
-                <Chip label="TypeScript" />
-                <Chip label="HTML" />
-                <Chip label="CSS" />
-                <Chip label="AWS" />
-                <Chip label="Java" />
-                <Chip label="Python" />
-                <Chip label="GitHub" />
-              </>
-            )}
-          </Box> */}
 
+        <Box  display="flex" flexWrap="wrap">
+          <Box sx={{ mb: 0.5, width: '100%' }}>
+            <Typography variant="subtitle2" fontWeight="bold">
+              Mentioned Skills:
+            </Typography>
+          </Box>
+          <Box display="flex" gap={1}  flexWrap="wrap"> 
+
+          <Chip variant="outlined" label="Java" sx={{ mr: 1, color: '#686EEC', borderColor: '#A8B8F9', fontWeight: "medium", '&:hover': { bgcolor: '#686EEC', color: 'white' } }} />
+          <Chip variant="outlined" label="Java" sx={{ mr: 1, color: '#686EEC', borderColor: '#A8B8F9', fontWeight: "medium", '&:hover': { bgcolor: '#686EEC', color: 'white' } }} />
+          <Chip variant="outlined" label="Java" sx={{ mr: 1, color: '#686EEC', borderColor: '#A8B8F9', fontWeight: "medium", '&:hover': { bgcolor: '#686EEC', color: 'white' } }} />
+          <Chip variant="outlined" label="Java" sx={{ mr: 1, color: '#686EEC', borderColor: '#A8B8F9', fontWeight: "medium", '&:hover': { bgcolor: '#686EEC', color: 'white' } }} />
+          <Chip variant="outlined" label="Java" sx={{ mr: 1, color: '#686EEC', borderColor: '#A8B8F9', fontWeight: "medium", '&:hover': { bgcolor: '#686EEC', color: 'white' } }} />
+          <Chip variant="outlined" label="Java" sx={{ mr: 1, color: '#686EEC', borderColor: '#A8B8F9', fontWeight: "medium", '&:hover': { bgcolor: '#686EEC', color: 'white' } }} />
+          <Chip variant="outlined" label="Java" sx={{ mr: 1, color: '#686EEC', borderColor: '#A8B8F9', fontWeight: "medium", '&:hover': { bgcolor: '#686EEC', color: 'white' } }} />
+          <Chip variant="outlined" label="Java" sx={{ mr: 1, color: '#686EEC', borderColor: '#A8B8F9', fontWeight: "medium", '&:hover': { bgcolor: '#686EEC', color: 'white' } }} />
+          <Chip variant="outlined" label="Java" sx={{ mr: 1, color: '#686EEC', borderColor: '#A8B8F9', fontWeight: "medium", '&:hover': { bgcolor: '#686EEC', color: 'white' } }} />
+          <Chip variant="outlined" label="Java" sx={{ mr: 1, color: '#686EEC', borderColor: '#A8B8F9', fontWeight: "medium", '&:hover': { bgcolor: '#686EEC', color: 'white' } }} />
+          <Chip variant="outlined" label="Java" sx={{ mr: 1, color: '#686EEC', borderColor: '#A8B8F9', fontWeight: "medium", '&:hover': { bgcolor: '#686EEC', color: 'white' } }} />
+          <Chip variant="outlined" label="Java" sx={{ mr: 1, color: '#686EEC', borderColor: '#A8B8F9', fontWeight: "medium", '&:hover': { bgcolor: '#686EEC', color: 'white' } }} />
+          <Chip variant="outlined" label="Java" sx={{ mr: 1, color: '#686EEC', borderColor: '#A8B8F9', fontWeight: "medium", '&:hover': { bgcolor: '#686EEC', color: 'white' } }} />
+          <Chip variant="outlined" label="Java" sx={{ mr: 1, color: '#686EEC', borderColor: '#A8B8F9', fontWeight: "medium", '&:hover': { bgcolor: '#686EEC', color: 'white' } }} />
+          <Chip variant="outlined" label="Java" sx={{ mr: 1, color: '#686EEC', borderColor: '#A8B8F9', fontWeight: "medium", '&:hover': { bgcolor: '#686EEC', color: 'white' } }} />
+          <Chip variant="outlined" label="Java" sx={{ mr: 1, color: '#686EEC', borderColor: '#A8B8F9', fontWeight: "medium", '&:hover': { bgcolor: '#686EEC', color: 'white' } }} />
+          <Chip variant="outlined" label="Java" sx={{ mr: 1, color: '#686EEC', borderColor: '#A8B8F9', fontWeight: "medium", '&:hover': { bgcolor: '#686EEC', color: 'white' } }} />
+
+
+</Box>
+        </Box>
+        <Divider sx={{ my: 2 }} />
 
         {/* <Typography variant="subtitle2" fontWeight="bold">
             Degree/Certifications:
@@ -116,13 +120,13 @@ const DetailSidePanel: React.FC<DetailSidePanelProps> = ({ selectedJob, showJobD
   );
   return (
     <Box sx={{ display: 'flex' }}>
-    
-    <Drawer anchor="right" open={showJobDetail} onClose={() => handlePanelClose()} >
-        <IconButton size="small" sx={{mr: 3, mt: 0.5, width: 40, alignSelf: "end"}} onClick={() => handlePanelClose()} >
+
+      <Drawer anchor="right" open={showJobDetail} onClose={() => handlePanelClose()} sx={{ overflowY: "auto" }} >
+        <IconButton size="small" sx={{ mr: 3, mt: 0.5, width: 40, alignSelf: "end" }} onClick={() => handlePanelClose()} >
           <CloseIcon />
         </IconButton>
-      {JobDetailDrawer}
-    </Drawer>
+        {JobDetailDrawer}
+      </Drawer>
     </Box>
   )
 }

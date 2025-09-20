@@ -15,7 +15,7 @@ createRoot(document.getElementById("root")!).render(
   <Box sx={{ display: "flex", flexDirection: "column" }}>
     <Navbar />
     <Box sx={{ display: "flex", flexDirection: {xs: "column", md: "row"} }}>
-    <Sidebar />
+    {/* <Sidebar /> */}
     <App />
     </Box>
   </Box>
