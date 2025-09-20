@@ -63,7 +63,7 @@ const DetailSidePanel: React.FC<DetailSidePanelProps> = ({ selectedJob, showJobD
 
 
 
-        <Box  display="flex" flexWrap="wrap">
+        {/* <Box  display="flex" flexWrap="wrap">
           <Box sx={{ mb: 0.5, width: '100%' }}>
             <Typography variant="subtitle2" fontWeight="bold">
               Mentioned Skills:
@@ -92,21 +92,7 @@ const DetailSidePanel: React.FC<DetailSidePanelProps> = ({ selectedJob, showJobD
 
 </Box>
         </Box>
-        <Divider sx={{ my: 2 }} />
-
-        {/* <Typography variant="subtitle2" fontWeight="bold">
-            Degree/Certifications:
-          </Typography>
-          <Box mt={1} display="flex" flexWrap="wrap" gap={1}>
-            {selectedJob.degrees?.map((deg, i) => (
-              <Chip key={i} label={deg} color="secondary" variant="outlined" />
-            )) || (
-              <>
-                <Chip label="Bachelor's" />
-                <Chip label="AWS Solutions Architect" />
-              </>
-            )}
-          </Box> */}
+        <Divider sx={{ my: 2 }} /> */}
 
         <Typography variant="subtitle2" fontWeight="bold">
           Job Description:
