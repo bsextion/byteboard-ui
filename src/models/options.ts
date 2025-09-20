@@ -1,4 +1,4 @@
-import { Employment, JobPostDate, SortBy, Option } from "./types"
+import { Employment, JobPostDate, SortBy, Option, JobPublisher } from "./types"
 
 export const sortByOptions: Option[] = [
     { label: "Most Recent", value: SortBy.RECENT },
@@ -23,4 +23,10 @@ export const filterEmploymentOptions: Option[] = [
 export const filterWorkFromHomeOptions: Option[] = [
     { label: "Remote Only", value: true },
     { label: "Remote Only", value: false },
+]
+
+export const filterJobPublisherOptions: Option[] = [
+    { label: "LinkedIn", value: JobPublisher.LINKEDIN },
+    { label: "Indeed", value: JobPublisher.INDEED },
+    { label: "Dice", value: JobPublisher.DICE },
 ]

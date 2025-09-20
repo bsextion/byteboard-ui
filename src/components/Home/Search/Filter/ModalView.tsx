@@ -1,14 +1,13 @@
 import React from "react";
 import { FilterItem } from "../../../../models/types";
-import { Checkbox, FormControlLabel, FormGroup, Radio, RadioGroup } from "@mui/material";
+import { Box, Button, Checkbox, FormControlLabel, FormGroup, Radio, RadioGroup } from "@mui/material";
 import { CheckBox } from "@mui/icons-material";
 
 type ViewProps = {
     modal: FilterItem;
-    handleFilterChange: (index: number) => void;
+    handleFilterChange: (index: number, triggerSearch?: boolean) => void;
+    handleTrigger?: () => void;
 };
-
-const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
 
 export const View: React.FC<ViewProps> = ({ modal, handleFilterChange }) =>
@@ -36,10 +35,9 @@ export const View: React.FC<ViewProps> = ({ modal, handleFilterChange }) =>
     </RadioGroup>
 )
 
-export const MultiSelectView: React.FC<ViewProps> = ({ modal, handleFilterChange }) =>
+export const MultiSelectView: React.FC<ViewProps> = ({ modal, handleFilterChange, handleTrigger }) =>
 (
     <FormGroup>
-        <FormControlLabel control={<Checkbox defaultChecked disabled />} label="Select All" sx={{fontWeight: "3", my: 1}} />
         {modal.options.map((option, index) => (
             <FormControlLabel
                 key={index}
@@ -52,13 +50,19 @@ export const MultiSelectView: React.FC<ViewProps> = ({ modal, handleFilterChange
                         onChange={(event) => {
                             const index = modal.options.findIndex(option => option.value === event.target.value);
                             if (index !== -1) {
-                                handleFilterChange(index);
+                                handleFilterChange(index, false);
                             }
                         }}
                     />
                 }
                 label={option.label}
             />
+            
         ))}
+        <Box display="flex" justifyContent="end" mt={2}>
+         <Button onClick={() => handleTrigger()} variant="contained" size="small" sx={{ mr: 1, bgcolor: '#38349F', '&:hover': { bgcolor: '#38349F' } }}>
+              Apply
+            </Button>
+            </Box>
     </FormGroup>
 )

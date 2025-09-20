@@ -11,7 +11,7 @@
         "sort": "Sort By",
         "date": "Filter By Date",
         "employment": "Filter By Employment",
-        "publish": "Hide Jobs By Publisher",
+        "publisher": "Exclude Jobs Posted On:",
         "remote": "Remote Only"
     },
     "logo": "/src/assets/logo.png",

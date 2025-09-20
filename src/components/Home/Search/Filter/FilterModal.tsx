@@ -2,6 +2,7 @@ import { Box, FormLabel, Modal } from "@mui/material";
 import React from "react";
 import { FilterItem } from "../../../../models/types";
 import { MultiSelectView, View } from "./ModalView";
+import { SearchParamContext } from "../../Home";
 
 type FilterModalProps = {
     modal: FilterItem;
@@ -11,6 +12,9 @@ type FilterModalProps = {
 };
 
 const FilterModal: React.FC<FilterModalProps> = ({ modal, handleFilterChange, handleOpen, isOpen }) => {
+    const {setTriggerSearch, searchParams } = React.useContext(SearchParamContext);
+    const {query} = searchParams;
+
     const isMultiSelect = modal && Array.isArray(modal.selected);
 
     const isFilterModalEmpty = !modal || Object.keys(modal).length === 0;
@@ -27,6 +31,14 @@ const FilterModal: React.FC<FilterModalProps> = ({ modal, handleFilterChange, ha
         p: 4,
     };
 
+    const handleTrigger = () => {
+        handleOpen();
+        if (query.trim() === "") {
+            return;
+        }
+        setTriggerSearch((prev: number) => prev + 1);
+    }
+
     return (
         <>
             {isOpen && !isFilterModalEmpty &&
@@ -40,7 +52,7 @@ const FilterModal: React.FC<FilterModalProps> = ({ modal, handleFilterChange, ha
                         <Box sx={modalStyle}>
                             <FormLabel id="demo-radio-buttons-group-label">{modal.title}</FormLabel>
                             {isMultiSelect ? 
-                            <MultiSelectView modal={modal} handleFilterChange={handleFilterChange} /> : 
+                            <MultiSelectView modal={modal} handleFilterChange={handleFilterChange} handleTrigger={handleTrigger} /> : 
                             <View modal={modal} handleFilterChange={handleFilterChange} />}
                         </Box>
                     </Modal>

@@ -25,14 +25,13 @@ const SearchResults: React.FC<SearchResultsProps> = ({ loading, jobs, currentPag
       
     }
 
-    const handleNextPage = (e: any, pageSelected: number) => {
+    const handlePage = (e: any, pageSelected: number) => {
       setSearchParams((prev) => ({
         ...prev,
         page: pageSelected
       }));
 
       setTriggerSearch((prev: number) => prev + 1);
-
     }
 
     const handlePanelClose = () => {
@@ -42,7 +41,7 @@ const SearchResults: React.FC<SearchResultsProps> = ({ loading, jobs, currentPag
 
     return (
       <>
-        <JobsPanel loading={loading} jobs={jobs} currentPage={currentPage} handleJobClick={handleJobClick} handleNextPage={handleNextPage} />
+        <JobsPanel loading={loading} jobs={jobs} handleJobClick={handleJobClick} handlePage={handlePage} currentPage={currentPage}/>
         {<DetailSidePanel  selectedJob={selectedJob} showJobDetail={showJobDetail} handlePanelClose={handlePanelClose} />}
 
       </>

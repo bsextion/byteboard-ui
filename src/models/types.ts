@@ -82,6 +82,12 @@ export enum JobPostDate {
     MONTH = "month",
 }
 
+export enum JobPublisher {
+    LINKEDIN = "LinkedIn",
+    INDEED = "Indeed",
+    DICE = "Dice",
+}
+
 // export type JobDetail = {
 //     employerLogo: string,
 //     employer: string,

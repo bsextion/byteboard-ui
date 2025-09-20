@@ -1,4 +1,7 @@
 import {
+  Card,
+  CardContent,
+  CardHeader,
   Divider,
   ListItem,
   ListItemButton,
@@ -11,7 +14,11 @@ const Job = ( {data, handleJobClick}) => {
 const {jobId, jobTitle, employerName, location, salary, employmentType, isRemote, jobPostingDate} = data
 return (
     <>
-        <ListItemButton onClick={() => handleJobClick(jobId)}>
+    <Card>
+      <CardHeader>Header</CardHeader>
+      <CardContent>Content</CardContent>
+    </Card>
+        {/* <ListItemButton onClick={() => handleJobClick(jobId)}>
         <ListItemText
           primary={jobTitle}
           secondary={
@@ -65,10 +72,10 @@ return (
           <Typography variant="body2" color="text.secondary">
             HTML/CSS
           </Typography> */}
-        </ListItemText>
+        {/* </ListItemText>
         </ListItemButton>
 
-      <Divider />
+      <Divider /> */}
       </>
   );
 };

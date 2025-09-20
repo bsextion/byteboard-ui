@@ -14,7 +14,6 @@ type DetailSidePanelProps = {
 };
 
 const DetailSidePanel: React.FC<DetailSidePanelProps> = ({ selectedJob, showJobDetail, handlePanelClose }) => {
-  console.log("DetailSidePanel selectedJob: ", selectedJob);
   const JobDetailDrawer = (
     showJobDetail && selectedJob &&
     <Box sx={{ width: {md: 600, sm: '100%'}, p: 2, height: "100%" }}>
@@ -29,8 +28,8 @@ const DetailSidePanel: React.FC<DetailSidePanelProps> = ({ selectedJob, showJobD
               <Typography color="text.secondary" sx={{ mr: 3, my: 1 }}>
                 {selectedJob.employerName}
               </Typography>
-              <Chip label={selectedJob.employmentType} variant="filled" sx={{ bgcolor: "#A8B8F9", color: "white" }} />
-              {selectedJob.isRemote && <Chip label={"Remote"} variant="filled" sx={{ bgcolor: "#A8B8F9", color: "white" }} />}
+              <Chip label={selectedJob.employmentType} variant="filled" sx={{ bgcolor: "#686EEC", color: "white" }} />
+              {selectedJob.isRemote && <Chip label={"Remote"} variant="filled" sx={{ bgcolor: "#686EEC", color: "white" }} />}
             </Box>
             <Box display="flex" sx={{my: 0.5}}>
               <LocationOn fontSize="small" />
@@ -50,7 +49,7 @@ const DetailSidePanel: React.FC<DetailSidePanelProps> = ({ selectedJob, showJobD
           </Box>
           <Box display="flex" flexDirection="column" height={100} alignContent="end">
 
-            <Button href={selectedJob.jobLink} target="_blank" rel="" variant="contained" size="small" sx={{ mr: 1, bgcolor: '#686EEC', '&:hover': { bgcolor: '#38349F' } }}>
+            <Button href={selectedJob.jobLink} target="_blank" rel="" variant="contained" size="small" sx={{ mr: 1, bgcolor: '#38349F', '&:hover': { bgcolor: '#38349F' } }}>
               Apply
             </Button>
             <IconButton>
