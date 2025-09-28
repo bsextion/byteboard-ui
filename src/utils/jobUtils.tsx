@@ -14,6 +14,8 @@ export const transformJobData = (jobs: any) => {
         isRemote: item.job_is_remote,
         jobLink: item.job_apply_link,
         description: item.job_description,
+        skills: item.skills,
+        certs: item.certs,
     }))
     console.log("Transformed job data:", transformedJobData);
     return transformedJobData;

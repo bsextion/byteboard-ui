@@ -17,17 +17,18 @@ return (
 
         <ListItemButton onClick={() => handleJobClick(jobId)}>
         <ListItemText  sx={{display: "flex", flexDirection: "column", width: '70%'}}
-          primary={jobTitle}
+          primary={<Typography>
+            {jobTitle}
+          </Typography>}
           secondary={
             <Typography
-              variant="body2"
-              color="text.secondary"
-              component="div"
             >
               <Typography
                 variant="body2"
                 color="text.primary"
+                
                 component="span"
+    
               >
                 {employerName}
               </Typography>

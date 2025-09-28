@@ -23,6 +23,8 @@ export type Job = {
     job_posted_at_datetime_utc: string,
     job_publisher: string,
     job_apply_link: string,
+    skills: string[],
+    certs: string[],
 
 }
 
@@ -39,6 +41,8 @@ export type JobDetail = {
     jobPublisher: string,
     jobLink: string,
     description: string,
+    skills: string[],
+    certs: string[],
 
 }
 

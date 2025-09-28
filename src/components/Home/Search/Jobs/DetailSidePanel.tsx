@@ -1,6 +1,6 @@
 import { Box, Button, Chip, Divider, Drawer, Grid2, IconButton, List, ListItem, ListItemButton, ListItemText, Paper, Toolbar, Typography, styled } from "@mui/material";
 import React, { useEffect, useState } from "react";
-import { Job } from "../../../../models/types";
+import { Job, JobDetail } from "../../../../models/types";
 import ListItemIcon from '@mui/material/ListItemIcon';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
@@ -8,7 +8,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import { LocationOn } from "@mui/icons-material";
 
 type DetailSidePanelProps = {
-  selectedJob: any,
+  selectedJob: JobDetail,
   showJobDetail: boolean,
   handlePanelClose: () => void,
 };
@@ -62,37 +62,36 @@ const DetailSidePanel: React.FC<DetailSidePanelProps> = ({ selectedJob, showJobD
         <Divider sx={{ my: 2 }} />
 
 
-
-        {/* <Box  display="flex" flexWrap="wrap">
+        {selectedJob.skills && selectedJob.skills.length > 0 &&<><Box display="flex" flexWrap="wrap">
           <Box sx={{ mb: 0.5, width: '100%' }}>
             <Typography variant="subtitle2" fontWeight="bold">
               Mentioned Skills:
             </Typography>
           </Box>
-          <Box display="flex" gap={1}  flexWrap="wrap"> 
-
-          <Chip variant="outlined" label="Java" sx={{ mr: 1, color: '#686EEC', borderColor: '#A8B8F9', fontWeight: "medium", '&:hover': { bgcolor: '#686EEC', color: 'white' } }} />
-          <Chip variant="outlined" label="Java" sx={{ mr: 1, color: '#686EEC', borderColor: '#A8B8F9', fontWeight: "medium", '&:hover': { bgcolor: '#686EEC', color: 'white' } }} />
-          <Chip variant="outlined" label="Java" sx={{ mr: 1, color: '#686EEC', borderColor: '#A8B8F9', fontWeight: "medium", '&:hover': { bgcolor: '#686EEC', color: 'white' } }} />
-          <Chip variant="outlined" label="Java" sx={{ mr: 1, color: '#686EEC', borderColor: '#A8B8F9', fontWeight: "medium", '&:hover': { bgcolor: '#686EEC', color: 'white' } }} />
-          <Chip variant="outlined" label="Java" sx={{ mr: 1, color: '#686EEC', borderColor: '#A8B8F9', fontWeight: "medium", '&:hover': { bgcolor: '#686EEC', color: 'white' } }} />
-          <Chip variant="outlined" label="Java" sx={{ mr: 1, color: '#686EEC', borderColor: '#A8B8F9', fontWeight: "medium", '&:hover': { bgcolor: '#686EEC', color: 'white' } }} />
-          <Chip variant="outlined" label="Java" sx={{ mr: 1, color: '#686EEC', borderColor: '#A8B8F9', fontWeight: "medium", '&:hover': { bgcolor: '#686EEC', color: 'white' } }} />
-          <Chip variant="outlined" label="Java" sx={{ mr: 1, color: '#686EEC', borderColor: '#A8B8F9', fontWeight: "medium", '&:hover': { bgcolor: '#686EEC', color: 'white' } }} />
-          <Chip variant="outlined" label="Java" sx={{ mr: 1, color: '#686EEC', borderColor: '#A8B8F9', fontWeight: "medium", '&:hover': { bgcolor: '#686EEC', color: 'white' } }} />
-          <Chip variant="outlined" label="Java" sx={{ mr: 1, color: '#686EEC', borderColor: '#A8B8F9', fontWeight: "medium", '&:hover': { bgcolor: '#686EEC', color: 'white' } }} />
-          <Chip variant="outlined" label="Java" sx={{ mr: 1, color: '#686EEC', borderColor: '#A8B8F9', fontWeight: "medium", '&:hover': { bgcolor: '#686EEC', color: 'white' } }} />
-          <Chip variant="outlined" label="Java" sx={{ mr: 1, color: '#686EEC', borderColor: '#A8B8F9', fontWeight: "medium", '&:hover': { bgcolor: '#686EEC', color: 'white' } }} />
-          <Chip variant="outlined" label="Java" sx={{ mr: 1, color: '#686EEC', borderColor: '#A8B8F9', fontWeight: "medium", '&:hover': { bgcolor: '#686EEC', color: 'white' } }} />
-          <Chip variant="outlined" label="Java" sx={{ mr: 1, color: '#686EEC', borderColor: '#A8B8F9', fontWeight: "medium", '&:hover': { bgcolor: '#686EEC', color: 'white' } }} />
-          <Chip variant="outlined" label="Java" sx={{ mr: 1, color: '#686EEC', borderColor: '#A8B8F9', fontWeight: "medium", '&:hover': { bgcolor: '#686EEC', color: 'white' } }} />
-          <Chip variant="outlined" label="Java" sx={{ mr: 1, color: '#686EEC', borderColor: '#A8B8F9', fontWeight: "medium", '&:hover': { bgcolor: '#686EEC', color: 'white' } }} />
-          <Chip variant="outlined" label="Java" sx={{ mr: 1, color: '#686EEC', borderColor: '#A8B8F9', fontWeight: "medium", '&:hover': { bgcolor: '#686EEC', color: 'white' } }} />
+          <Box display="flex" gap={1} flexWrap="wrap">
+            {selectedJob.skills.map((skill) => (
+              <Chip variant="outlined" label={skill} sx={{ mr: 1, color: '#686EEC', borderColor: '#A8B8F9', fontWeight: "medium", '&:hover': { bgcolor: '#686EEC', color: 'white' } }} />))}
 
 
-</Box>
+          </Box>
         </Box>
-        <Divider sx={{ my: 2 }} /> */}
+          <Divider sx={{ my: 2 }} /></>}
+
+          {selectedJob.certs && selectedJob.certs.length > 0 && <><Box display="flex" flexWrap="wrap">
+          <Box sx={{ mb: 0.5, width: '100%' }}>
+            <Typography variant="subtitle2" fontWeight="bold">
+              Degree/Certifications:
+            </Typography> 
+          </Box>
+          <Box display="flex" gap={1} flexWrap="wrap">
+            {selectedJob.certs.map((cert) => (
+              <Chip variant="outlined" label={cert} sx={{ mr: 1, color: '#686EEC', borderColor: '#A8B8F9', fontWeight: "medium", '&:hover': { bgcolor: '#686EEC', color: 'white' } }} />))}
+
+
+          </Box>
+        </Box>
+          <Divider sx={{ my: 2 }} /></>}
+
 
         <Typography variant="subtitle2" fontWeight="bold">
           Job Description:
