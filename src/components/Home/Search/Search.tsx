@@ -16,16 +16,16 @@ const Search = () => {
 
   return (
     <Box
-      sx={{
-        textAlign: "center",
-        width: "100%",
-        height: "100%",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "flex-start",
-        alignItems: "center",
-      }}
-    >
+  sx={{
+    width: "100%",
+    // remove height: "100%"
+    textAlign: "center",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+  }}
+>
+
       <SearchBar setTriggerSearch={setTriggerSearch} searchParams={searchParams} setSearchParams={setSearchParams} />
       <Filter setTriggerSearch={setTriggerSearch} searchParams={searchParams} setSearchParams={setSearchParams} />
       <SearchResults jobs={jobs} loading={loading} currentPage={page} setSearchParams={setSearchParams} setTriggerSearch={setTriggerSearch}/>

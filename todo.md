@@ -1,8 +1,18 @@
 ## TODO
 
+- [x] Update to use useEffect throughout for api calls
+- [] FastAPI and SpaCy for the skills mentioned section
+    - Languages
+    - Cloud
+    - Other
+- [x] FastAPI and SpaCy for the degrees/certifications section
+- [] Implemnt backend caching to check if job_id exists before calling transformer (Caffeine)
+- [] **Bonus - implement frontend caching with React query to check if job exists before making call
+- [] Dockerize
+
 - [x] Configure to call front end
 - [x] Display in results tab
-- [] Sort by posting date
+- [x] Sort by posting date
     - [x] Add sorting functionality in backend
     - [x] Update FilterRow to display correct modal
     - [x] Add context to manage search query
@@ -11,13 +21,19 @@
 - [x] Update sorting functionality in frontend
 - [x] Add loading spinner
 - [x] Map job details accordingly
-- [] Add filters (Employment Type, Job Poster, Remote Only, Date Posted)
+- [] Refactoring
+    - [x] Split into two components
+    - [x] Resolve message into console
+    - [x] Reduce filtermodal jsx
+- [x] Add filters (Employment Type, Job Poster, Remote Only, Date Posted)
+    - [x] Add Job Publisher filter (LinkedIn, Indeed, Dice) (Will show "Exclude Job Postings From" with preselected options)
     - [x] Add filtering functionality in backend
     - [x] Call the endpoint and from the response, get a unique list of job publishers
     - [x] Update filters in frontend
-    - [] Update employment type filter for alow multi select
-    - [] Add Radio button for Remote Only filter
-    - [] Add filter to hide/show publisher in frontend. Should show publishers after first search with results
-    - [] Add message if query is empty
-    - [ ] Ensure tabulation is working (get 10 pages of data max)
-    - [] Fix ui to show rows properly
+    - [x] Update employment type filter for alow multi select
+    - [x] Ensure tabulation is working (get 10 pages of data max)
+    - [x] Fix button is modals (sortby and date)
+    - [] Update to use useEffect instead of triggerSearch
+    - [x] Add Radio button for Remote Only filter
+    - [x] Add message if query is empty
+    - [x] Fix ui to show rows properly

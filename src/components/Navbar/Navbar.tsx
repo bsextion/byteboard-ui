@@ -25,15 +25,15 @@ const Navbar = () => {
         ByteBoard
       </Typography>
       <Box sx={{ display: "flex", justifyContent: "flex-end", width: "100%" }}>
-        <Button
+        {/* <Button
           className="login-btn"
           sx={{ backgroundColor: "#E3E3E3", color: "#1e1d49", mx: 1 }}
         >
           Login
-        </Button>
-        <Button sx={{ backgroundColor: "#686EEC", color: "white", mx: 1 }}>
+        </Button> */}
+        {/* <Button sx={{ backgroundColor: "#686EEC", color: "white", mx: 1 }}>
           Register
-        </Button>
+        </Button> */}
       </Box>
     </Stack>
   );

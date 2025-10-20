@@ -43,14 +43,19 @@ const Home = () => {
   );
 
   return (
-    <Stack direction="column" sx={{ width: "100vw", height: "100vh" }}>
-      <DescContainer />
-      <SearchParamContext.Provider value={{
+    <Stack sx={{ width: "100vw", height: "100vh" }}>
+  <Box sx={{ flex: "0 0 25%", textAlign: "center" }}>
+    <DescContainer />
+  </Box>
+
+  <Box sx={{ flex: "1 1 auto", overflowY: "auto" }}>
+    <SearchParamContext.Provider value={{
         searchParams, setSearchParams, triggerSearch, setTriggerSearch
       }}>
-        <Search />
-      </SearchParamContext.Provider>
-    </Stack>
+      <Search />
+    </SearchParamContext.Provider>
+  </Box>
+</Stack>
   );
 };
 
