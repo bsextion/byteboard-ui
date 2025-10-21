@@ -48,7 +48,7 @@ const Home = () => {
     <DescContainer />
   </Box>
 
-  <Box sx={{ flex: "1 1 auto", overflowY: "auto" }}>
+  <Box sx={{ flex: "1 1 auto" }}>
     <SearchParamContext.Provider value={{
         searchParams, setSearchParams, triggerSearch, setTriggerSearch
       }}>

@@ -116,7 +116,7 @@ const Filter = ({ setTriggerSearch, searchParams, setSearchParams }) => {
     return (
         <>
             <FilterModal modal={activeFilterModal} handleFilterChange={handleFilterChange} handleOpen={handleOpen} isOpen={isOpen} />
-            <Box sx={{ display: "flex", justifyContent: "center", width: "80%", px: 5 }}>
+            <Box sx={{ display: "flex", justifyContent: "center", flexWrap: 'wrap', justifyItems: 'flex-start', width: { xs: "90%", md: "80%" }, px: 5 }}>
                 <MenuButton onClick={() => handleOpen(key.mapping.sort)} title={filterModals[key.mapping.sort as keyof FilterModals].selected.label} />
                 <MenuButton onClick={() => handleOpen(key.mapping.date)} title={filterModals[key.mapping.date as keyof FilterModals].selected.label} />
                 <MenuButton onClick={() => handleOpen(key.mapping.employment)} title={"Employment Type"} />

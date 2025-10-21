@@ -37,7 +37,7 @@ export default function SearchBar({ setTriggerSearch, searchParams, setSearchPar
     <>
       <Paper
         component="form"
-        sx={{ px: 2, display: "flex", justifyContent: "center", width: "50%" }}
+        sx={{ px: 2, display: "flex", justifyContent: "center", width: { xs: "80%", md: "50%" } }}
         onSubmit={(e) => handleSubmit(e)}
       >
         <IconButton sx={{ p: "10px" }} aria-label="menu">
